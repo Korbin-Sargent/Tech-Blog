@@ -15,10 +15,10 @@ Comment.init(
       type: DataTypes.VARCHAR(500),
       allowNull: false,
     },
-    blogPostId: {
+    blogId: {
       allowNull: false,
       references: {
-        model: "BlogPost",
+        model: "Blog",
         key: "id",
       },
     },

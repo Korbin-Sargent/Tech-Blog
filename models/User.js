@@ -24,7 +24,6 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    //May need an array for references to the post and comment IDs. Likley good with foreign keys established in Comments
   },
   {
     hooks: {
