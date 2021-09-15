@@ -12,10 +12,11 @@ Comment.init(
       autoIncrement: true,
     },
     commentContent: {
-      type: DataTypes.VARCHAR(500),
+      type: DataTypes.STRING,
       allowNull: false,
     },
     blogId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: "Blog",
@@ -23,6 +24,7 @@ Comment.init(
       },
     },
     userId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: "User",

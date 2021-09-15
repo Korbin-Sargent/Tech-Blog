@@ -16,10 +16,11 @@ Blog.init(
       allowNull: false,
     },
     postContent: {
-      type: DataTypes.VARCHAR(500),
+      type: DataTypes.STRING,
       allowNull: false,
     },
     userId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: "User",

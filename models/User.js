@@ -17,7 +17,7 @@ User.init(
       autoIncrement: true,
     },
     UserName: {
-      type: DataTypes.VARCHAR(30),
+      type: DataTypes.STRING,
       allowNull: false,
     },
     password: {
