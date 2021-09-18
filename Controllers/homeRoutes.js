@@ -2,31 +2,37 @@ const router = require("express").Router();
 const { User, Blog, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
-router.get("/", withAuth, async (req, res) => {
+//needed: routes for homepage,dashboard, login, logout, view single blog
+
+router.get("/", async (req, res) => {
   try {
     const userData = await User.findAll({
       attributes: { exclude: ["password"] },
-      order: [["name", "ASC"]],
+      order: [["UserName", "ASC"]],
     });
+    const blogData = await Blog.findAll();
+    console.log({ blogData });
 
     const users = userData.map((project) => project.get({ plain: true }));
-
-    res.render("homepage", {
+    const dbBlogData = "hello";
+    res.render("home", {
       users,
-      logged_in: req.session.logged_in,
+      blogData,
+      dbBlogData,
+      // logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get("/login", (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect("/");
-    return;
-  }
+// router.get("/login", (req, res) => {
+//   if (req.session.logged_in) {
+//     res.redirect("/");
+//     return;
+//   }
 
-  res.render("login");
-});
+//   res.render("login");
+// });
 
 module.exports = router;
