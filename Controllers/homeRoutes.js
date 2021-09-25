@@ -35,6 +35,14 @@ router.get("/", async (req, res) => {
   }
 });
 
+//render login handlebar to the page when "login" is clicked
+router.get("/login", (req, res) => {
+  console.log("login route working!!!!!!!!!!!!!!!!!");
+  res.render("login", {
+    routeName: "loginRoute",
+  });
+});
+
 // router.get("/login", (req, res) => {
 //   if (req.session.logged_in) {
 //     res.redirect("/");

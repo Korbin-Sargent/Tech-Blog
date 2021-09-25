@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Need a post route to login in user
+// Need a post route to log in a user
 router.post("/login", async (req, res) => {
   try {
     const dbUserData = await User.findOne({
@@ -31,8 +31,8 @@ router.post("/login", async (req, res) => {
       return;
     }
     req.session.save(() => {
-      // req.session.username = dbUserData.UserName;
-      // req.session.userId = dbUserData.id;
+      req.session.username = dbUserData.UserName;
+      req.session.userId = dbUserData.id;
       req.session.loggedIn = true;
 
       res
@@ -41,6 +41,17 @@ router.post("/login", async (req, res) => {
     });
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+//log out a user
+router.post("/logout", (req, res) => {
+  if (req.session.loggedIn) {
+    res.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
   }
 });
 
