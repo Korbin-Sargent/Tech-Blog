@@ -6,19 +6,28 @@ const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
-    const userData = await User.findAll({
-      attributes: { exclude: ["password"] },
-      order: [["UserName", "ASC"]],
+    console.log(Date);
+    const blogData = await Blog.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ["UserName"],
+        },
+      ],
     });
-    const blogData = await Blog.findAll();
     console.log({ blogData });
 
-    const users = userData.map((project) => project.get({ plain: true }));
-    const dbBlogData = "hello";
+    const blogs = blogData.map((project) => project.get({ plain: true }));
+    console.log(blogs);
+    //Format createdAt times here. Can do on front end as well if wanted.
+    for (var i = 0; i < blogs.length; i++) {
+      console.log(blogs[i].createdAt);
+      let formattedDate = blogs[i].createdAt.toDateString();
+      console.log(formattedDate);
+      blogs[i].formattedDate = formattedDate;
+    }
     res.render("home", {
-      users,
-      blogData,
-      dbBlogData,
+      blogs,
       // logged_in: req.session.logged_in,
     });
   } catch (err) {

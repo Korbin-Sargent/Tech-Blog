@@ -1,0 +1,12 @@
+[
+  {
+    "commentContent": "This post was awesome",
+    "blogId": 1,
+    "userId": 1
+  },
+  {
+    "commentContent": "Powerful stuff",
+    "blogId": 2,
+    "userId": 2
+  }
+]

@@ -1,6 +1,6 @@
 //Getting an instance of an express router
 const router = require("express").Router();
-const userRoutes = require("./userRoutes");
+const userRoutes = require("./userRoutes.js");
 // const commentRoutes = require("./commentRoutes");
 // const blogRoutes = require("./blogRoutes");
 

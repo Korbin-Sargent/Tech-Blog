@@ -3,7 +3,6 @@ const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
-console.log(express);
 
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -25,6 +24,7 @@ const sess = {
 
 app.use(session(sess));
 
+//templating engine we want to use. Allows us to render handlebars page. (res.render)
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 

@@ -1,0 +1,12 @@
+[
+  {
+    "title": "regex",
+    "postContent": "Allows matching of different patterns",
+    "userId": 1
+  },
+  {
+    "title": "JavaScript",
+    "postContent": "Very powerful programming language",
+    "userId": 2
+  }
+]
