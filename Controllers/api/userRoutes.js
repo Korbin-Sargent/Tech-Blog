@@ -13,6 +13,21 @@ router.get("/", async (req, res) => {
   }
 });
 
+//Need a post route to create a user
+router.post("/signup", async (req, res) => {
+  console.log("POST route working ");
+  try {
+    const newReview = Review.create({
+      UserName: req.body.username,
+      password: req.body.password,
+    });
+
+    res.status(200).json(newReview);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // Need a post route to log in a user
 router.post("/login", async (req, res) => {
   try {
