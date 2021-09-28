@@ -6,15 +6,21 @@ async function deleteFormHandler(e) {
   ];
 
   const response = await fetch(`/api/blogs/${id}`, {
-      method: "DELETE",
-      body: JSON.stringify({blogId: id}),
-      headers: {'Content-Type': "application/json"},
-  }),
+    method: "DELETE",
+    body: JSON.stringify({
+      blogId: id,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
   if (response.ok) {
-      document.location.replace("/dashboard/");
+    document.location.replace("/dashboard/");
   } else {
-      alert(response.statusText);
+    alert(response.statusText);
   }
 }
 
-document.querySelector(".delete-post-btn").addEventListener("click", deleteFormHandler);
+document
+  .querySelector(".delete-post-btn")
+  .addEventListener("click", deleteFormHandler);

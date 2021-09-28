@@ -26,7 +26,7 @@ router.get("/", withAuth, (req, res) => {
   })
     .then((dbBlogData) => {
       const blogs = dbBlogData.map((blog) => blog.get({ plain: true }));
-      res.render("dashboard", { blogs, loggedIn: true });
+      res.render("dashboard", { blogs });
     })
     .catch((err) => {
       console.log(err);

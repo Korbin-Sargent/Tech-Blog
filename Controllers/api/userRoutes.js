@@ -17,12 +17,12 @@ router.get("/", async (req, res) => {
 router.post("/signup", async (req, res) => {
   console.log("POST route working ");
   try {
-    const newReview = Review.create({
+    const newUser = User.create({
       UserName: req.body.username,
       password: req.body.password,
     });
 
-    res.status(200).json(newReview);
+    res.status(200).json(newUser);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -57,6 +57,7 @@ router.post("/login", async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+  console.log("!!! Logged In !!!");
 });
 
 //log out a user
