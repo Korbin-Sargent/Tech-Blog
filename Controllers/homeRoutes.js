@@ -8,7 +8,16 @@ router.get("/", async (req, res) => {
   try {
     console.log(Date);
     const blogData = await Blog.findAll({
+      attributes: ["id", "title", "postContent", "create_at"],
       include: [
+        {
+          model: Comment,
+          attributes: ["id", "commentContent", "blogId", "userId", "created_at"],
+          include: {
+            model: User,
+            attributes: ["UserName"],
+          }
+        }
         {
           model: User,
           attributes: ["UserName"],
@@ -43,6 +52,19 @@ router.get("/login", (req, res) => {
   });
 });
 
+router.get("/signup", (req, res) => {
+  console.log("login route working!!!!!!!!!!!!!!!!!");
+  res.render("signup", {
+    routeName: "signupRoute",
+  });
+});
+
+router.get("/dashboard", withAuth, (req, res) => {
+  console.log("dashboard route working!!!!!!!!!!!!!!!!!");
+  res.render("dashboard", {
+    routeName: "dashboardRoute",
+  });
+});
 // router.get("/login", (req, res) => {
 //   if (req.session.logged_in) {
 //     res.redirect("/");

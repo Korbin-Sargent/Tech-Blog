@@ -1,6 +1,6 @@
 const router = require("express").Router();
 // const { Router } = require("express");
-const { User } = require("../../models");
+const { User, Blog } = require("../../models");
 
 router.get("/", async (req, res) => {
   try {
@@ -26,6 +26,45 @@ router.post("/signup", async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+router.get("/:id", (req, res) => {
+  User.findOne({
+    attributes: { exclude: ["password"] },
+    where: {
+      id: req.params.id,
+    },
+    include: [
+      {
+        model: Blog,
+        attributes: ["id", "title", "postContent", "created_at"],
+      },
+
+      {
+        model: Comment,
+        attributes: ["id", "commentContent", "created_at"],
+        include: {
+          model: Blog,
+          attributes: ["title"],
+        },
+      },
+      {
+        model: Blog,
+        attributes: ["title"],
+      },
+    ],
+  })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "Could not find a user with this id" });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // Need a post route to log in a user
