@@ -5,7 +5,7 @@ const withAuth = require("../../utils/auth");
 //Route to get all blog posts and associated comments
 router.get("/", (req, res) => {
   //   console.log("!!!!!!!!!);
-  Post.findAll({
+  Blog.findAll({
     attributes: ["id", "title", "postContent", "created_at"],
     order: [["created_at", "DESC"]],
     include: [
@@ -33,7 +33,7 @@ router.get("/", (req, res) => {
 //Route to find a single blog post
 
 router.get("/:id", (req, res) => {
-  Post.findOne({
+  Blog.findOne({
     where: {
       id: req.params.id,
     },
@@ -63,7 +63,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", withAuth, (req, res) => {
-  Post.create({
+  Blog.create({
     title: req.body.title,
     postContent: req.body.content,
     userId: req.session.userId,
@@ -78,7 +78,7 @@ router.post("/", withAuth, (req, res) => {
 //route to update a blog post
 
 router.put("/:id", withAuth, (req, res) => {
-  Post.update(
+  Blog.update(
     {
       title: req.body.title,
       postContent: req.body.content,
@@ -105,7 +105,7 @@ router.put("/:id", withAuth, (req, res) => {
 //Route to delete a blog post
 
 router.put("/:id", withAuth, (req, res) => {
-  Post.delete({
+  Blog.delete({
     where: {
       id: req.params.id,
     },

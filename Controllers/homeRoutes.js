@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
 
     const blogs = blogData.map((project) => project.get({ plain: true }));
     console.log(blogs);
-    //Format createdAt times here. Can do on front end as well if wanted.
+    //Format createdAt times here. Can do on front end as well with format_date function
     for (var i = 0; i < blogs.length; i++) {
       console.log(blogs[i].createdAt);
       let formattedDate = blogs[i].createdAt.toDateString();
