@@ -18,8 +18,11 @@
       <ul class="navbar-nav me-auto">
         <a class="nav-link" href="/">Home</a>
         <a class="nav-link" href="/dashboard">Dashboard</a>
-        <a class="nav-link" href="/login">Login</a>
-        <a class="nav-link" href="/api/users/logout">Logout</a>
+        {{#if loggedIn}}
+          <a class="nav-link" id="logout" href="/">Logout</a>
+        {{else}}
+          <a class="nav-link" href="/login">Login</a>
+        {{/if}}
       </ul>
       {{! <a class="nav-link" href="/login">Login</a> }}
       {{! <a class="nav-link" href="/api/user/logout">Logout</a> }}
@@ -30,3 +33,5 @@
     </div>
   </div>
 </nav>
+
+<script src="/js/logout.js"></script>

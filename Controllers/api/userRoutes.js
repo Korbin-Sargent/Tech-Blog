@@ -1,6 +1,6 @@
 const router = require("express").Router();
 // const { Router } = require("express");
-const { User, Blog } = require("../../models");
+const { User, Blog, Comment } = require("../../models");
 
 router.get("/", async (req, res) => {
   try {
@@ -68,7 +68,7 @@ router.get("/:id", (req, res) => {
 });
 
 // Need a post route to log in a user
-router.post("/login", async (req, res) => {
+router.post("/signin", async (req, res) => {
   try {
     const dbUserData = await User.findOne({
       where: {
@@ -100,7 +100,8 @@ router.post("/login", async (req, res) => {
 });
 
 //log out a user
-router.post("/logout", (req, res) => {
+router.post("/signout", (req, res) => {
+  console.log("Hello!!!!");
   if (req.session.loggedIn) {
     res.session.destroy(() => {
       res.status(204).end();

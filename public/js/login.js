@@ -9,7 +9,7 @@ async function loginFormHandler(event) {
 
   //Conditional statement to check if username and password match in database
   if (username && password) {
-    const response = await fetch("/api/users/login", {
+    const response = await fetch("/api/users/signin", {
       method: "POST",
       body: JSON.stringify({
         username,
@@ -17,7 +17,7 @@ async function loginFormHandler(event) {
       }),
       headers: { "Content-Type": "application/json" },
     });
-    console.log(response);
+    // console.log(response);
     if (response.ok) {
       document.location.replace("/");
     } else {
@@ -27,30 +27,5 @@ async function loginFormHandler(event) {
 }
 
 document
-  .querySelector(".login-form")
-  .addEventListener("submit", loginFormHandler);
-
-// const singUpFormhandler = async (event) => {
-//   // console.log("function working");
-//   event.preventDefault();
-
-//   const email = document.querySelector("#email-signup").value.trim();
-//   const password = document.querySelector("#password-signup").value.trim();
-//   console.log(email);
-//   console.log(password);
-
-//   if (email && password) {
-//     // console.log("IF STATEMENT WORKING");
-//     const response = await fetch("/api/users/signup", {
-//       method: "POST",
-//       body: JSON.stringify({ email, password }),
-//       headers: { "Content-Type": "application/json" },
-//     });
-
-//     if (response.ok) {
-//       document.location.replace("/");
-//     } else {
-//       alert("Failed to sign up.");
-//     }
-//   }
-// };
+  .querySelector("#login-form")
+  .addEventListener("click", loginFormHandler);
