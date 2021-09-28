@@ -34,6 +34,7 @@ router.get("/", withAuth, (req, res) => {
     });
 });
 
+//Update route for editing a blog
 router.get("/edit/:id", withAuth, (req, res) => {
   Blog.findOne({
     where: {
