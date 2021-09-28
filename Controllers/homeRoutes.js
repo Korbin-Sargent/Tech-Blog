@@ -50,13 +50,6 @@ router.get("/signup", (req, res) => {
   });
 });
 
-// router.get("/dash", withAuth, (req, res) => {
-//   console.log("dashboard route working!!!!!!!!!!!!!!!!!");
-//   res.render("dashboard", {
-//     routeName: "dashboardRoute",
-//   });
-// });
-
 router.get("/logout", (req, res) => {
   console.log("signout route working!!!!!!!!!!!!!!!!!");
   res.render("logout");

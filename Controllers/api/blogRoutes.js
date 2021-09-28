@@ -105,8 +105,8 @@ router.put("/:id", withAuth, (req, res) => {
 
 //Route to delete a blog post
 
-router.put("/:id", withAuth, (req, res) => {
-  Blog.delete({
+router.delete("/:id", withAuth, (req, res) => {
+  Blog.destroy({
     where: {
       id: req.params.id,
     },
