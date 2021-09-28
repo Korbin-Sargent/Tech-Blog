@@ -9,7 +9,7 @@ async function commentFormHandler(e) {
     window.location.toString().split("/").length - 1
   ];
 
-  if (comment_text) {
+  if (commentContent) {
     const response = await fetch("/api/comments", {
       method: "POST",
       body: JSON.stringify({
