@@ -62,6 +62,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
+//Route to create a blog post
 router.post("/", withAuth, (req, res) => {
   Blog.create({
     title: req.body.title,
@@ -75,7 +76,7 @@ router.post("/", withAuth, (req, res) => {
     });
 });
 
-//route to update a blog post
+//Route to update a blog post
 
 router.put("/:id", withAuth, (req, res) => {
   Blog.update(

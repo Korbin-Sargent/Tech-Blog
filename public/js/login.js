@@ -37,7 +37,7 @@ const singUpFormhandler = async (event) => {
 
   if (email && password) {
     // console.log("IF STATEMENT WORKING");
-    const response = await fetch("/api/user", {
+    const response = await fetch("/api/users/signup", {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },
