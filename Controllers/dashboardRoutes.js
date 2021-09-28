@@ -1,9 +1,10 @@
 const router = require("express").Router();
-// const sequelize = require("../config/connection");
+const sequelize = require("../config/connection");
 const { User, Comment, Blog } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", withAuth, (req, res) => {
+  console.log("!!!!Look here!!!!!");
   Blog.findAll({
     where: {
       userId: req.session.userId,
@@ -15,18 +16,19 @@ router.get("/", withAuth, (req, res) => {
         attributes: ["id", "commentContent", "blogId", "userId", "created_at"],
         include: {
           model: User,
-          attributes: ["username"],
+          attributes: ["UserName"],
         },
       },
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["UserName"],
       },
     ],
   })
     .then((dbBlogData) => {
       const blogs = dbBlogData.map((blog) => blog.get({ plain: true }));
-      res.render("dashboard", { blogs });
+      res.render("dashboard", { blogs, loggedIn: true });
+      console.log(blogs);
     })
     .catch((err) => {
       console.log(err);

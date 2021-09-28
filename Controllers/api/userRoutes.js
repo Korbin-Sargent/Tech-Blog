@@ -92,18 +92,18 @@ router.post("/signin", async (req, res) => {
       res
         .status(200)
         .json({ user: dbUserData, message: "You are now logged in!" });
+      console.log("!!! Logged In !!!");
     });
   } catch (err) {
     res.status(500).json(err);
   }
-  console.log("!!! Logged In !!!");
 });
 
 //log out a user
 router.post("/signout", (req, res) => {
   console.log("Hello!!!!");
   if (req.session.loggedIn) {
-    res.session.destroy(() => {
+    req.session.destroy(() => {
       res.status(204).end();
     });
   } else {

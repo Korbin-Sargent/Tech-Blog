@@ -5,7 +5,7 @@ async function newFormHandler(event) {
   const title = document.querySelector('input[name="blog-title"]').value;
   const content = document.querySelector('input[name="content"]').value;
 
-  const response = await fetch(`/api/blog`, {
+  const response = await fetch(`/api/blogs`, {
     method: "POST",
     body: JSON.stringify({
       title,
@@ -24,5 +24,5 @@ async function newFormHandler(event) {
 }
 
 document
-  .querySelector("#new-post-form")
+  .querySelector(".create-btn")
   .addEventListener("submit", newFormHandler);

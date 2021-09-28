@@ -44,17 +44,22 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/signup", (req, res) => {
-  console.log("login route working!!!!!!!!!!!!!!!!!");
+  console.log("signup route working!!!!!!!!!!!!!!!!!");
   res.render("signup", {
     routeName: "signupRoute",
   });
 });
 
-router.get("/dashboard", withAuth, (req, res) => {
-  console.log("dashboard route working!!!!!!!!!!!!!!!!!");
-  res.render("dashboard", {
-    routeName: "dashboardRoute",
-  });
+// router.get("/dash", withAuth, (req, res) => {
+//   console.log("dashboard route working!!!!!!!!!!!!!!!!!");
+//   res.render("dashboard", {
+//     routeName: "dashboardRoute",
+//   });
+// });
+
+router.get("/logout", (req, res) => {
+  console.log("signout route working!!!!!!!!!!!!!!!!!");
+  res.render("logout");
 });
 // router.get("/login", (req, res) => {
 //   if (req.session.logged_in) {
