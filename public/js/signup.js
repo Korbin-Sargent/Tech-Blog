@@ -1,5 +1,5 @@
 const singUpFormhandler = async (event) => {
-  // console.log("function working");
+  console.log("CREATING NEW USER!!!!!");
   event.preventDefault();
 
   const username = document.querySelector("#username-signup").value.trim();
@@ -22,3 +22,7 @@ const singUpFormhandler = async (event) => {
     }
   }
 };
+
+document
+  .querySelector("#signup-form")
+  .addEventListener("click", singUpFormhandler);
